@@ -769,7 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FrameSize: {x: 15, y: 30}
   RoomSize: {x: 25, y: 50}
-  Seed: 0
+  Seed: 2137
   ChanceGrowRoom: 115
   SmallRoom:
   - {fileID: 2021896391368853132, guid: 1882913c1214b624699dedbc4445c873, type: 3}
