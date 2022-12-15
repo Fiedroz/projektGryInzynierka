@@ -103,9 +103,9 @@ public class MapGenerator : MonoBehaviour
     {
         this.loadFrame();
         this.generateFrame();
-        this.generateDoor();
+        //this.generateDoor();
         this.generateBorderMAP();
-        this.generateGruz();
+        //this.generateGruz();
         //GetComponent<NavMeshSurface>().BuildNavMesh();
         this.enemiesSpawn();
     }
@@ -328,7 +328,7 @@ public class MapGenerator : MonoBehaviour
         }
         else
         {
-            this.rooms.Add(GameObject.Instantiate(this.BigRoom[rnd.Next(1, this.BigRoom.Length)]));
+            this.rooms.Add(GameObject.Instantiate(this.BigRoom[rnd.Next(0, this.BigRoom.Length)]));
             this.rooms[this.frame[x, y].Index - 1].transform.SetPositionAndRotation(new Vector3((x + 1) * this.RoomSize.x, 0, (y + 1) * this.RoomSize.x), Quaternion.Euler(0, 90 * this.rnd.Next(0, 4), 0));
         }
 
@@ -449,7 +449,7 @@ public class MapGenerator : MonoBehaviour
                                                       5,
                                                       -((this.RoomSize.x + this.RoomSize.x / borderDivider) / 2f));
         partOfBorder.AddComponent<Wall>();
-        partOfBorder.GetComponent<Renderer>().material = wallMaterial;
+        //partOfBorder.GetComponent<Renderer>().material = wallMaterial;
         partOfBorder.name = "BorderWall";
 
 
@@ -464,7 +464,7 @@ public class MapGenerator : MonoBehaviour
                                                       5,
                                                       this.RoomSize.x * this.FrameSize.y + (this.RoomSize.x / borderDivider - this.RoomSize.x) / 2f);
         partOfBorder.AddComponent<Wall>();
-        partOfBorder.GetComponent<Renderer>().material = wallMaterial;
+        //partOfBorder.GetComponent<Renderer>().material = wallMaterial;
         partOfBorder.name = "BorderWall";
 
 
@@ -479,7 +479,7 @@ public class MapGenerator : MonoBehaviour
                                                       5,
                                                       this.RoomSize.x * (this.FrameSize.y - 1) / 2f);
         partOfBorder.AddComponent<Wall>();
-        partOfBorder.GetComponent<Renderer>().material = wallMaterial;
+        //partOfBorder.GetComponent<Renderer>().material = wallMaterial;
         partOfBorder.name = "BorderWall";
 
 
@@ -494,7 +494,7 @@ public class MapGenerator : MonoBehaviour
                                                       this.RoomSize.x * (this.FrameSize.y - 1) / 2f);
         partOfBorder.name = "BorderWall";
         partOfBorder.AddComponent<Wall>();
-        partOfBorder.GetComponent<Renderer>().material = wallMaterial;
+        //partOfBorder.GetComponent<Renderer>().material = wallMaterial;
     }
 
     private void generateGruz()
