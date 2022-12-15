@@ -7,11 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public static Vector3 move;
     public float speed;
     CharacterController contr;
-
+    private void Start()
+    {
+        contr = GetComponent<CharacterController>();
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        Movement();
     }
     private void Movement()
     {
