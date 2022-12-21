@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public static Vector3 move;
     public float speed;
     CharacterController contr;
+    public Camera mainCam;
+    public Transform cameraLookAtTarget;
+    public Transform PlayerTransform;
     private void Start()
     {
         contr = GetComponent<CharacterController>();
@@ -15,6 +18,23 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
+        LookAtCamTarget();
+    }
+    private void LookAtCamTarget()
+    {
+            Vector3 m = Input.mousePosition;
+            m = new Vector3(m.x, m.y, transform.position.y);
+            Vector3 p = mainCam.ScreenToWorldPoint(m);
+            Camera cami = mainCam;
+            Ray raycast = cami.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hito;
+            if (Physics.Raycast(raycast, out hito))
+            {
+                cameraLookAtTarget.transform.position = new Vector3(hito.point.x,0.5f,hito.point.z); //hito.point;
+                Vector3 target = new Vector3(cameraLookAtTarget.position.x, transform.position.y, cameraLookAtTarget.position.z);
+                PlayerTransform.LookAt(target);//new Vector3(cameraLookAtTarget.position.x,transform.position.y,cameraLookAtTarget.position.z));
+            }
+
     }
     private void Movement()
     {
