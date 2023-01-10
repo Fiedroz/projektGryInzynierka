@@ -11,16 +11,13 @@ public class GameManager : MonoBehaviour
 
     #region Debug
     public TextMeshProUGUI[] textDebugs;
-    public Vector3 way = new Vector3();
-    public Vector3 move= new Vector3();
-    public Transform playerTransform;
     #endregion
 
     private void Update()
     {
-        UIDebug();
+
     }
-    void UIDebug()
+    public void UIDebug(Vector3 way, Vector3 move, Transform playerTransform)
     {
         textDebugs[0].text = "Way: " + way;
         textDebugs[1].text = "Move: " + move;

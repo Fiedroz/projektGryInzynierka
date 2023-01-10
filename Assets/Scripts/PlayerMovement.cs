@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform PlayerTransform;
 
     public Animator animator;
+    public PlayerMain playerMain;
     private void Start()
     {
         contr = GetComponent<CharacterController>();
@@ -98,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("Run", false);
             }
         }
-
+        speed = speed * playerMain.speed;
         move = way * speed;
         contr.Move(move);
         Vector3 direction = Vector3.RotateTowards(PlayerTransform.forward,way,Time.deltaTime*30f,0.0f);
@@ -106,8 +107,5 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 pos = transform.position;
         transform.position = pos;
-
-        //GameManager.Instance.way = way;
-        //GameManager.Instance.move = move;
     }
 }

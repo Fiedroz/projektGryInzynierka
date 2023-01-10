@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8554282540512387164}
   - component: {fileID: 8554282540512387162}
   - component: {fileID: 8554282540512387163}
+  - component: {fileID: 4122225147030848965}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -183,11 +184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9870bc149e71483458dd1921fc607c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.03
   mainCam: {fileID: 8554282539175553811}
   cameraLookAtTarget: {fileID: 0}
   PlayerTransform: {fileID: 6893311139468045658}
   animator: {fileID: 6893311139475260084}
+  playerMain: {fileID: 4122225147030848965}
 --- !u!143 &8554282540512387163
 CharacterController:
   m_ObjectHideFlags: 0
@@ -199,13 +201,29 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.03
-  m_Radius: 0.02
+  m_Height: 4.45
+  m_Radius: 0.64
   m_SlopeLimit: 45
-  m_StepOffset: 0
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.019, z: 0}
+  m_Center: {x: 0, y: 1.94, z: 0}
+--- !u!114 &4122225147030848965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554282540512387160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3097ca5f5a4e8b428a7463572d986e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  armor: 5
+  speed: 1
+  attackPower: 10
 --- !u!1001 &6893311139467917268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,29 +297,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 8c7d3ad213acf0d448446b4d5a505e7e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02dd6406ed1ebc248b2fafd0485e0de9, type: 3}
---- !u!1 &6893311139468013946 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100014, guid: 02dd6406ed1ebc248b2fafd0485e0de9, type: 3}
-  m_PrefabInstance: {fileID: 6893311139467917268}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &1700435254172693986
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6893311139468013946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0.25
-  m_Radius: 0.06
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.115, z: 0}
 --- !u!4 &6893311139468045658 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400014, guid: 02dd6406ed1ebc248b2fafd0485e0de9, type: 3}
