@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
-        LookAtCamTarget();
     }
     private void LookAtCamTarget()
     {
@@ -35,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
                 PlayerTransform.LookAt(target);//new Vector3(cameraLookAtTarget.position.x,transform.position.y,cameraLookAtTarget.position.z));
             }
 
+    }
+    private void LookAtObjectTarget()
+    {
+            Vector3 target = new Vector3(cameraLookAtTarget.position.x, transform.position.y, cameraLookAtTarget.position.z);
+            PlayerTransform.LookAt(target);//new Vector3(cameraLookAtTarget.position.x,transform.position.y,cameraLookAtTarget.position.z));
     }
     private void Movement()
     {
@@ -91,8 +95,14 @@ public class PlayerMovement : MonoBehaviour
 
         move = way * speed;
         contr.Move(move);
+        Vector3 direction = Vector3.RotateTowards(PlayerTransform.forward,way,Time.deltaTime*30f,0.0f);
+        //Quaternion toRotation = Quaternion.FromToRotation(PlayerTransform.forward, way);
+        PlayerTransform.rotation = Quaternion.LookRotation(direction); //Quaternion.Lerp(PlayerTransform.rotation, toRotation, 10f * Time.time);
 
         Vector3 pos = transform.position;
         transform.position = pos;
+
+        //GameManager.Instance.way = way;
+        //GameManager.Instance.move = move;
     }
 }
