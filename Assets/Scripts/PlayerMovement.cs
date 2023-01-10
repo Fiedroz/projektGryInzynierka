@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera mainCam;
     public Transform cameraLookAtTarget;
     public Transform PlayerTransform;
+
+    public Animator animator;
     private void Start()
     {
         contr = GetComponent<CharacterController>();
@@ -75,10 +77,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 way *= verticalMove;
                 way = Quaternion.Euler(0, 45 * horizontalMove * verticalMove, 0) * way;
+                animator.SetBool("Run", true);
             }
             else
             {
                 way *= verticalMove;
+                animator.SetBool("Run",true);
             }
         }
         else
@@ -86,18 +90,19 @@ public class PlayerMovement : MonoBehaviour
             if (horizontalMove != 0)
             {
                 way = Quaternion.Euler(0, 90 * horizontalMove, 0) * way;
+                animator.SetBool("Run", true);
             }
             else
             {
                 way = new Vector3();
+                animator.SetBool("Run", false);
             }
         }
 
         move = way * speed;
         contr.Move(move);
         Vector3 direction = Vector3.RotateTowards(PlayerTransform.forward,way,Time.deltaTime*30f,0.0f);
-        //Quaternion toRotation = Quaternion.FromToRotation(PlayerTransform.forward, way);
-        PlayerTransform.rotation = Quaternion.LookRotation(direction); //Quaternion.Lerp(PlayerTransform.rotation, toRotation, 10f * Time.time);
+        PlayerTransform.rotation = Quaternion.LookRotation(direction); 
 
         Vector3 pos = transform.position;
         transform.position = pos;

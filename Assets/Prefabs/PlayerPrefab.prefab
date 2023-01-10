@@ -187,6 +187,7 @@ MonoBehaviour:
   mainCam: {fileID: 8554282539175553811}
   cameraLookAtTarget: {fileID: 0}
   PlayerTransform: {fileID: 8159488815642464709}
+  animator: {fileID: 1680422097}
 --- !u!143 &8554282540512387163
 CharacterController:
   m_ObjectHideFlags: 0
@@ -408,3 +409,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.019, z: 0}
+--- !u!95 &1680422097
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824666530430323583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 02dd6406ed1ebc248b2fafd0485e0de9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8c7d3ad213acf0d448446b4d5a505e7e, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
