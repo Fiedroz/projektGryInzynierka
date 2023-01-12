@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using AIBehavior;
 
 public class MapGenerator : MonoBehaviour
 {
+    public NavMeshSurface navMeshSurface;
     /// Size Rooms/Frame/Seed
     public Vector2Int FrameSize = new Vector2Int(5, 11);
     public Vector2 RoomSize;
@@ -108,6 +110,7 @@ public class MapGenerator : MonoBehaviour
         //this.generateGruz();
         //GetComponent<NavMeshSurface>().BuildNavMesh();
         this.enemiesSpawn();
+        navMeshSurface.BuildNavMesh();
     }
 
     void loadFrame()
