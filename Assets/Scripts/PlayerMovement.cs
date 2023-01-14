@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     public PlayerMain playerMain;
+    public Transform spawnTransform;
     private void Start()
     {
         contr = GetComponent<CharacterController>();

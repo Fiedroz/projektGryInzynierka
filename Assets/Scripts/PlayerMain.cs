@@ -24,10 +24,14 @@ public class PlayerMain : MonoBehaviour
             }
             else
             {
-                Debug.Log("YOU DIED");
-                health = 0;
-                alive = false;
+                Death();
             }
         }
+    }
+    public void Death()
+    {
+        Debug.Log("YOU DIED");
+        health = 0;
+        alive = false;
     }
 }

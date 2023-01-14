@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = Random.Range(0.5f, 2f);
+        player = GameManager.Instance.playerMovement;
     }
     private void Update()
     {
@@ -28,9 +29,5 @@ public class EnemyBehaviour : MonoBehaviour
         agent.destination = player.PlayerTransform.position;
         
         agent.speed = speed;
-/*        if (agent.velocity == Vector3.zero)
-        {
-            transform.LookAt(new Vector3(GameObject.Find("InventoryDemoCharacter_Swappable(Clone)").transform.position.x, this.transform.position.y, GameObject.Find("InventoryDemoCharacter_Swappable(Clone)").transform.position.z));
-        }*/
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3023098411655355174}
   - component: {fileID: 4504669318571461344}
   - component: {fileID: 7813224493969164807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MediumTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
