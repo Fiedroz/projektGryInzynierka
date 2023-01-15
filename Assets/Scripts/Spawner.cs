@@ -42,15 +42,4 @@ public class Spawner : MonoBehaviour//GameManager.Instance.playerMovement.Player
             }
         }
     }
-    void OnDrawGizmos()
-    {
-        for (int i = 0; i < numCubes; i++)
-        {
-            float angle = Random.Range(0f, 2 * Mathf.PI); // generate a random angle
-            Vector3 spawnPos = GameManager.Instance.playerMovement.spawnTransform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (radius - (cubeDistance * i)); // calculate spawn position using trigonometry and offsetting the radius by i*cubeDistance
-            // Draw the ray in the scene view
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(spawnPos, spawnPos + Vector3.down * height);
-        }
-    }
 }
