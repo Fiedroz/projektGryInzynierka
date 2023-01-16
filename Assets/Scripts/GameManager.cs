@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public PlayerMain playerMain;
     public PlayerMovement playerMovement;
     public UIController uiController;
+
+    private float startTime = 0f;
+    public TextMeshProUGUI timeText;
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -22,10 +25,19 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+        startTime = Time.time;
     }
 
     private void Update()
     {
+        Timer();
+    }
+    private void Timer()
+    {
+        float t = Time.time - startTime;
 
+        string minutes = ((int)t / 60).ToString("00");
+        string seconds = ((int)t%60).ToString("00");
+        timeText.text = minutes+":"+seconds;
     }
 }
