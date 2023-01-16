@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public PlayerMain playerMain;
     public PlayerMovement playerMovement;
     public UIController uiController;
+    public SkillsManager skillsManager;
 
     private float startTime = 0f;
     public TextMeshProUGUI timeText;
@@ -39,5 +40,11 @@ public class GameManager : MonoBehaviour
         string minutes = ((int)t / 60).ToString("00");
         string seconds = ((int)t%60).ToString("00");
         timeText.text = minutes+":"+seconds;
+    }
+    public enum EnemyType{
+        Basic,
+        Fridge,
+        Oven,
+        Microwave
     }
 }

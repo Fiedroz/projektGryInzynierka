@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("Run", false);
             }
         }
-        speed = speed * playerMain.speed;
+        speed = playerMain.speed/100;
         move = way * speed;
         contr.Move(move);
         Vector3 direction = Vector3.RotateTowards(PlayerTransform.forward,way,Time.deltaTime*30f,0.0f);

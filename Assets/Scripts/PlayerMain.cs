@@ -8,7 +8,9 @@ public class PlayerMain : MonoBehaviour
     public float armor = 5;
     public float speed = 1;
     public float attackPower = 10;
-    bool alive = true;
+    public bool alive = true;
+    public List<SkillsManager.Skills> skillsDatas = new List<SkillsManager.Skills>();
+    public List<SkillsManager.PassiveSkills> passiveSkillsDatas= new List<SkillsManager.PassiveSkills>();
     void Update()
     {
 

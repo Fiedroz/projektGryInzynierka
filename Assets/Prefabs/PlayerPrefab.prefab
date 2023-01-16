@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5543148848226482372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 27.7, z: 0}
+  m_LocalPosition: {x: 0, y: 2.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 8554282540512387162}
   - component: {fileID: 8554282540512387163}
   - component: {fileID: 4122225147030848965}
+  - component: {fileID: 1548283813}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -222,7 +223,7 @@ MonoBehaviour:
   PlayerTransform: {fileID: 6893311139468045658}
   animator: {fileID: 6893311139475260084}
   playerMain: {fileID: 4122225147030848965}
-  spawnTransform: {fileID: 0}
+  spawnTransform: {fileID: 9131495123125811022}
 --- !u!143 &8554282540512387163
 CharacterController:
   m_ObjectHideFlags: 0
@@ -255,8 +256,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   armor: 5
-  speed: 1
+  speed: 3
   attackPower: 10
+  alive: 1
+  skillsDatas: 
+  passiveSkillsDatas: 
+--- !u!135 &1548283813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554282540512387160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.31
+  m_Center: {x: 0, y: 0.08437568, z: 0}
 --- !u!1001 &6893311139467917268
 PrefabInstance:
   m_ObjectHideFlags: 0

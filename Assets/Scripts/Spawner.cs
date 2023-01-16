@@ -20,10 +20,16 @@ public class Spawner : MonoBehaviour//GameManager.Instance.playerMovement.Player
     }
     IEnumerator SpawnTiming()
     {
-        for (int i=0;i<5;i++)
+        for (int i=0;i<50;i++)
         {
-            yield return new WaitForSeconds(5);
-            SpawnBasicEnemy();
+            if (GameManager.Instance.playerMain.alive) {
+                yield return new WaitForSeconds(5);
+                SpawnBasicEnemy();
+            }
+            else
+            {
+                break;
+            }
         }
         yield return new WaitForSeconds(1);
 
