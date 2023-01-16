@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5543148848226482372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.87, z: 0}
+  m_LocalPosition: {x: 0, y: 27.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,6 +222,7 @@ MonoBehaviour:
   PlayerTransform: {fileID: 6893311139468045658}
   animator: {fileID: 6893311139475260084}
   playerMain: {fileID: 4122225147030848965}
+  spawnTransform: {fileID: 0}
 --- !u!143 &8554282540512387163
 CharacterController:
   m_ObjectHideFlags: 0

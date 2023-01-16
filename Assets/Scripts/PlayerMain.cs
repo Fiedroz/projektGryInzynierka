@@ -9,7 +9,6 @@ public class PlayerMain : MonoBehaviour
     public float speed = 1;
     public float attackPower = 10;
     bool alive = true;
-
     void Update()
     {
 

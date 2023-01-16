@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     private NavMeshAgent agent;
 
     public PlayerMovement player;
+    public float distanceToPlayer;
 
     private void Start()
     {
@@ -27,7 +28,12 @@ public class EnemyBehaviour : MonoBehaviour
     private void Destination()
     {
         agent.destination = player.PlayerTransform.position;
-        
         agent.speed = speed;
+        distanceToPlayer = agent.remainingDistance;
+        if (agent.remainingDistance>=60f)
+        {
+            Debug.Log("Denied");
+            Destroy(this.gameObject);
+        }
     }
 }
