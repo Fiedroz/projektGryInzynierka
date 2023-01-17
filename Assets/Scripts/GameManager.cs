@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public UIController uiController;
     public SkillsManager skillsManager;
+    public VFXManager vFXManager;
 
     private float startTime = 0f;
     public TextMeshProUGUI timeText;

@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
     }
     public void UIDebug()
     {
-        textDebugs[0].text = "HP: " + player.playerMain.health;
+        textDebugs[0].text = "HP: " + player.playerMain.health + "/" + player.playerMain.maxHealth;
         textDebugs[1].text = "Armor: " + player.playerMain.armor;
         textDebugs[2].text = "Speed: " + player.playerMain.speed;
         textDebugs[3].text = "Attack: " + player.playerMain.attackPower;

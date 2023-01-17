@@ -5,6 +5,9 @@ using UnityEngine;
 public class SkillsManager: MonoBehaviour
 {
     PlayerMain playerMain;
+
+    public int garlicRadius = 10;
+    public float garlicDamage = 10;
     private void Start()
     {
         playerMain = GameManager.Instance.playerMain;
@@ -74,5 +77,129 @@ public class SkillsManager: MonoBehaviour
         playerMain.attackPower += skill.damage;
 
         playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+    }
+    public void Letuce()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.Letuce;
+        skill.health = 25;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.maxHealth += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.CheckHP();
+    }
+    public void BeefJerky()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.BeefJerky;
+        skill.health = 0;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 5;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+    }
+    public void Vitamins()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.Vitamins;
+        skill.health = 0;
+        skill.armor = 3;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+    }
+    public void Potato()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.Potato;
+        skill.health = 15f;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.CheckHP();
+    }
+    public void AppleJuice()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.AppleJuice;
+        skill.health = 20;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.CheckHP();
+    }
+    public void Garlic()
+    {
+        PassiveSkillsData skill;
+
+        skill.passiveSkill = SkillsManager.PassiveSkills.Garlic;
+        skill.health = 20;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 0;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.CheckHP();
+        GarlicAttack(garlicDamage);
+    }
+    public void GarlicAttack(float garlicDamage)
+    {
+        StartCoroutine(playerMain.GarlicAttack(garlicRadius,garlicDamage));
     }
 }

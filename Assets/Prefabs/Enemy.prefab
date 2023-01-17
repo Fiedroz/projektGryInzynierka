@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1233105370242688398}
   - component: {fileID: 834568945}
   - component: {fileID: 652154652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,11 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eb3ce42d5c9274c8cd757998e9cd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
+  maxHealth: 5
   armor: 5
   speed: 5
   attackPower: 5
   player: {fileID: 0}
+  distanceToPlayer: 0
 --- !u!143 &834568945
 CharacterController:
   m_ObjectHideFlags: 0

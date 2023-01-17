@@ -7,6 +7,7 @@ using AIBehavior;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float health = 10;
+    public float maxHealth = 10f;
     public float armor = 5;
     public float speed = 10f;
     public float attackPower = 5;
@@ -34,6 +35,19 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Debug.Log("Denied");
             Destroy(this.gameObject);
+        }
+    }
+    public void Death()
+    {
+        Debug.Log("Died");
+        Destroy(this.gameObject);
+    }
+    public void ApplyDamage(float amount) 
+    {
+        health -= amount;
+        if (health<=0)
+        {
+            Death();
         }
     }
 }
