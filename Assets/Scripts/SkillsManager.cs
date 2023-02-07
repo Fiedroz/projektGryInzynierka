@@ -202,4 +202,29 @@ public class SkillsManager: MonoBehaviour
     {
         StartCoroutine(playerMain.GarlicAttack(garlicRadius,garlicDamage));
     }
+    public void ProtectionDome()
+    {
+        SkillsData skill;
+
+        skill.skill = SkillsManager.Skills.ProtectionDome;
+        skill.health = 0;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 1;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+
+        playerMain.skillsDatas.Add(skill.skill);
+        playerMain.CheckHP();
+        ProtectionDomeStart();
+    }
+    public void ProtectionDomeStart()
+    {
+        StartCoroutine(playerMain.ProtectionDome());
+    }
 }

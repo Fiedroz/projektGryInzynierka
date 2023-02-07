@@ -14,9 +14,6 @@ public class PlayerMain : MonoBehaviour
     public bool alive = true;
     public List<SkillsManager.Skills> skillsDatas = new List<SkillsManager.Skills>();
     public List<SkillsManager.PassiveSkills> passiveSkillsDatas= new List<SkillsManager.PassiveSkills>();
-    void Update()
-    {
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Enemy")
@@ -46,7 +43,6 @@ public class PlayerMain : MonoBehaviour
     }
     public IEnumerator GarlicAttack(float garlicRadius,float garlicDamage)
     {
-        
         for (int i=0;i<5;i++)
         {
             GameManager.Instance.vFXManager.SpawnVFX(0, GameManager.Instance.playerMovement.PlayerTransform.position, GameManager.Instance.playerMovement.PlayerTransform);
@@ -61,9 +57,9 @@ public class PlayerMain : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
-    private void OnDrawGizmosSelected()
+    public IEnumerator ProtectionDome()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, 15);
+        GameManager.Instance.vFXManager.SpawnVFX(1, GameManager.Instance.playerMovement.PlayerTransform.position, GameManager.Instance.playerMovement.PlayerTransform);
+        yield return new WaitForSeconds(1);
     }
 }
