@@ -6,21 +6,27 @@ using AIBehavior;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public float health = 10;
-    public float maxHealth = 10f;
-    public float armor = 5;
-    public float speed = 10f;
-    public float attackPower = 5;
+    public float health;
+    public float maxHealth;
+    public float armor;
+    public float speed;
+    public float attackPower;
     private NavMeshAgent agent;
 
     public PlayerMovement player;
     public float distanceToPlayer;
+
+    Renderer enemyRenderer;
+    Color defalutColor;
+
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = Random.Range(0.5f, 2f);
         player = GameManager.Instance.playerMovement;
+        enemyRenderer = GetComponent<Renderer>();
+        defalutColor = enemyRenderer.material.color;
     }
     private void Update()
     {
@@ -45,7 +51,33 @@ public class EnemyBehaviour : MonoBehaviour
     public void ApplyDamage(float amount) 
     {
         health -= amount;
-        if (health<=0)
+        StartCoroutine(TakeDamage());
+    }
+    public IEnumerator ApplySlow(float duration, float slowPower)
+    {
+        float defalutSpeed = speed;
+        speed -= slowPower;
+        yield return new WaitForSeconds(duration);
+        speed = defalutSpeed;
+
+    }
+    private IEnumerator TakeDamage()
+    {
+        float t = 0;
+        float fadeTime = 0.9f;
+        if (health <= 0)
+        {
+            fadeTime = 0;
+        }
+        enemyRenderer.material.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        while (t < fadeTime)
+        {
+            t += Time.deltaTime;
+            enemyRenderer.material.color = Color.Lerp(Color.white, defalutColor, t);
+            yield return null;
+        }
+        if (health <= 0)
         {
             Death();
         }

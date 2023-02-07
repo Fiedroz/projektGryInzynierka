@@ -44,7 +44,8 @@ public class Spawner : MonoBehaviour//GameManager.Instance.playerMovement.Player
             // check if the spawn point is on a ground plane
             if (Physics.Raycast(spawnPos, Vector3.down, out hit, height, groundLayer))
             {
-                Instantiate(cubePrefab, spawnPos, Quaternion.identity); // spawn the cube on the ground plane
+                GameObject enemy = Instantiate(cubePrefab, spawnPos, Quaternion.identity); // spawn the cube on the ground plane
+
             }
         }
     }

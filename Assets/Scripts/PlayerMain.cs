@@ -12,8 +12,10 @@ public class PlayerMain : MonoBehaviour
     public float exp = 0;
     public float level = 1;
     public bool alive = true;
+
     public List<SkillsManager.Skills> skillsDatas = new List<SkillsManager.Skills>();
     public List<SkillsManager.PassiveSkills> passiveSkillsDatas= new List<SkillsManager.PassiveSkills>();
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Enemy")
@@ -60,6 +62,23 @@ public class PlayerMain : MonoBehaviour
     public IEnumerator ProtectionDome()
     {
         GameManager.Instance.vFXManager.SpawnVFX(1, GameManager.Instance.playerMovement.PlayerTransform.position, GameManager.Instance.playerMovement.PlayerTransform);
-        yield return new WaitForSeconds(1);
+        for (; ; )
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(GameManager.Instance.playerMovement.PlayerTransform.position, SkillsManager.protectionDomeRadius, LayerMask.GetMask("Enemy"));
+            if (hitColliders.Length > 0)//hitColliders[i].gameObject.GetComponent<EnemyBehaviour>().ApplyDamage(garlicDamage);
+            {
+                foreach (Collider col in hitColliders)
+                {
+                    col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.protectionDomeDamage);
+                    StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.protectionDomeRefresh, SkillsManager.protectionDomeSlow));
+                }
+            }
+            yield return new WaitForSeconds(SkillsManager.protectionDomeRefresh);
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, 3.8f);
     }
 }

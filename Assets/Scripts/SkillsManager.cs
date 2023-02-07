@@ -8,6 +8,11 @@ public class SkillsManager: MonoBehaviour
 
     public int garlicRadius = 10;
     public float garlicDamage = 10;
+
+    public static float protectionDomeRadius = 3.8f;
+    public static float protectionDomeDamage = 2f;//5
+    public static float protectionDomeSlow = 3f;
+    public static float protectionDomeRefresh = 0.5f;
     private void Start()
     {
         playerMain = GameManager.Instance.playerMain;
@@ -218,10 +223,19 @@ public class SkillsManager: MonoBehaviour
         playerMain.armor += skill.armor;
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
-
-        playerMain.skillsDatas.Add(skill.skill);
-        playerMain.CheckHP();
-        ProtectionDomeStart();
+        if(!playerMain.skillsDatas.Contains(skill.skill)) {
+            playerMain.skillsDatas.Add(skill.skill);
+            playerMain.CheckHP();
+            ProtectionDomeStart();
+        }
+        else
+        {
+            ProtectionDomeUpgrade();
+        }
+    }
+    public void ProtectionDomeUpgrade() 
+    {
+        
     }
     public void ProtectionDomeStart()
     {
