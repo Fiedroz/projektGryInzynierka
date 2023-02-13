@@ -10,9 +10,11 @@ public class SkillsManager: MonoBehaviour
     public float garlicDamage = 10;
 
     public static float protectionDomeRadius = 3.8f;
-    public static float protectionDomeDamage = 2f;//5
+    public static float protectionDomeDamage = 5f;
     public static float protectionDomeSlow = 3f;
     public static float protectionDomeRefresh = 0.5f;
+    public static int protectionDomeLevel = 0;
+    public static GameObject protectionDomeObject;
     private void Start()
     {
         playerMain = GameManager.Instance.playerMain;
@@ -81,7 +83,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
     }
     public void Letuce()
     {
@@ -101,7 +103,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
         playerMain.CheckHP();
     }
     public void BeefJerky()
@@ -121,7 +123,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
     }
     public void Vitamins()
     {
@@ -140,7 +142,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
     }
     public void Potato()
     {
@@ -159,7 +161,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
         playerMain.CheckHP();
     }
     public void AppleJuice()
@@ -179,7 +181,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
         playerMain.CheckHP();
     }
     public void Garlic()
@@ -199,7 +201,7 @@ public class SkillsManager: MonoBehaviour
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
 
-        playerMain.passiveSkillsDatas.Add(skill.passiveSkill);
+        playerMain.passiveSkillsDatas.Add(skill);
         playerMain.CheckHP();
         GarlicAttack(garlicDamage);
     }
@@ -223,18 +225,44 @@ public class SkillsManager: MonoBehaviour
         playerMain.armor += skill.armor;
         playerMain.speed += skill.speed;
         playerMain.attackPower += skill.damage;
-        if(!playerMain.skillsDatas.Contains(skill.skill)) {
-            playerMain.skillsDatas.Add(skill.skill);
+        if(!playerMain.skillsDatas.Contains(skill)) {
+            protectionDomeLevel = skill.level;
+            playerMain.skillsDatas.Add(skill);
             playerMain.CheckHP();
             ProtectionDomeStart();
         }
         else
         {
-            ProtectionDomeUpgrade();
+            protectionDomeLevel++;
+            ProtectionDomeUpgrade(protectionDomeLevel);
         }
     }
-    public void ProtectionDomeUpgrade() 
+    public void ProtectionDomeUpgrade(int level) 
     {
+        switch (level)
+        {
+            case 2: 
+                {
+                    protectionDomeObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    protectionDomeObject.transform.GetChild(0).transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    protectionDomeRadius = 5.8f;
+                    protectionDomeDamage += 1;
+                    protectionDomeSlow += 1;
+                    protectionDomeRefresh -= 0.1f;
+                    break; 
+                }
+            case 3:
+                {
+                    protectionDomeObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                    protectionDomeObject.transform.GetChild(0).transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                    protectionDomeRadius = 6.4f;
+                    protectionDomeDamage += 1;
+                    protectionDomeSlow += 1;
+                    protectionDomeRefresh -= 0.1f;
+                    break;
+                }
+
+        }
         
     }
     public void ProtectionDomeStart()

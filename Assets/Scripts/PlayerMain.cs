@@ -13,8 +13,8 @@ public class PlayerMain : MonoBehaviour
     public float level = 1;
     public bool alive = true;
 
-    public List<SkillsManager.Skills> skillsDatas = new List<SkillsManager.Skills>();
-    public List<SkillsManager.PassiveSkills> passiveSkillsDatas= new List<SkillsManager.PassiveSkills>();
+    public List<SkillsManager.SkillsData> skillsDatas = new List<SkillsManager.SkillsData>();
+    public List<SkillsManager.PassiveSkillsData> passiveSkillsDatas= new List<SkillsManager.PassiveSkillsData>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -61,7 +61,8 @@ public class PlayerMain : MonoBehaviour
     }
     public IEnumerator ProtectionDome()
     {
-        GameManager.Instance.vFXManager.SpawnVFX(1, GameManager.Instance.playerMovement.PlayerTransform.position, GameManager.Instance.playerMovement.PlayerTransform);
+        GameObject dome = GameManager.Instance.vFXManager.SpawnVFX(1, GameManager.Instance.playerMovement.PlayerTransform.position, GameManager.Instance.playerMovement.PlayerTransform);
+        SkillsManager.protectionDomeObject = dome;
         for (; ; )
         {
             Collider[] hitColliders = Physics.OverlapSphere(GameManager.Instance.playerMovement.PlayerTransform.position, SkillsManager.protectionDomeRadius, LayerMask.GetMask("Enemy"));
@@ -79,6 +80,6 @@ public class PlayerMain : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, 3.8f);
+        Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, SkillsManager.protectionDomeRadius);
     }
 }

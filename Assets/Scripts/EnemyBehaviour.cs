@@ -64,9 +64,10 @@ public class EnemyBehaviour : MonoBehaviour
     private IEnumerator TakeDamage()
     {
         float t = 0;
-        float fadeTime = 0.9f;
+        float fadeTime = 0.5f;
         if (health <= 0)
         {
+            speed -= 100;
             fadeTime = 0;
         }
         enemyRenderer.material.color = Color.white;
