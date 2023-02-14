@@ -261,7 +261,26 @@ public class SkillsManager: MonoBehaviour
                     protectionDomeRefresh -= 0.1f;
                     break;
                 }
-
+            case 4:
+                {
+                    protectionDomeObject.transform.localScale = new Vector3(2f, 2f, 2f);
+                    protectionDomeObject.transform.GetChild(0).transform.localScale = new Vector3(2f, 2f, 2f);
+                    protectionDomeRadius = 8f;
+                    protectionDomeDamage += 2;
+                    protectionDomeSlow += 1;
+                    protectionDomeRefresh -= 0.1f;
+                    break;
+                }
+            case 5:
+                {
+                    protectionDomeObject.transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
+                    protectionDomeObject.transform.GetChild(0).transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
+                    protectionDomeRadius = 9f;
+                    protectionDomeDamage += 2;
+                    protectionDomeSlow += 1;
+                    protectionDomeRefresh -= 0.1f;
+                    break;
+                }
         }
         
     }
