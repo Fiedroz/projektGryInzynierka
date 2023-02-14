@@ -8,9 +8,10 @@ public class MenuController : MonoBehaviour
     [SerializeField] bool isMainPanel = false;
     public int index;
     int menuLength;
+
     void Start()
     {
-        if(!isMainPanel)
+        if (!isMainPanel)
         {
             gameObject.SetActive(false);
         }
@@ -48,6 +49,12 @@ public class MenuController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             buttons[index].DoAction();
+            index = 0;
+        }
+
+        if (Input.GetAxis("Cancel") > 0)
+        {
+            buttons[buttons.Length - 1].DoAction();
             index = 0;
         }
     }
