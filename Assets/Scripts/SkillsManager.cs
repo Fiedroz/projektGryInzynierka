@@ -15,6 +15,14 @@ public class SkillsManager: MonoBehaviour
     public static float protectionDomeRefresh = 0.5f;
     public static int protectionDomeLevel = 0;
     public static GameObject protectionDomeObject;
+
+    public static float beamRandomRadius = 15f;
+    public static float beamRadius = 3.8f;
+    public static float beamDamage = 15f;
+    public static float beamSlow = 100f;
+    public static float beamSlowDuration = 2f;//1-2
+    public static float beamRefresh = 2f;
+    public static int beamLevel = 0;
     private void Start()
     {
         playerMain = GameManager.Instance.playerMain;
@@ -288,4 +296,66 @@ public class SkillsManager: MonoBehaviour
     {
         StartCoroutine(playerMain.ProtectionDome());
     }
+    public void Beam()
+    {
+        SkillsData skill;
+
+        skill.skill = SkillsManager.Skills.Beam;
+        skill.health = 0;
+        skill.armor = 0;
+        skill.speed = 0;
+        skill.damage = 0;
+        skill.level = 1;
+        skill.upgraded = false;
+
+        playerMain.health += skill.health;
+        playerMain.armor += skill.armor;
+        playerMain.speed += skill.speed;
+        playerMain.attackPower += skill.damage;
+        if (!playerMain.skillsDatas.Contains(skill))
+        {
+            beamLevel = skill.level;
+            playerMain.skillsDatas.Add(skill);
+            playerMain.CheckHP();
+            BeamStart();
+        }
+        else
+        {
+            beamLevel++;
+            BeamUpgrade(beamLevel);
+        }
+    }
+    public void BeamUpgrade(int level)
+    {
+        switch (level)
+        {
+            case 2:
+                {
+
+                    break;
+                }
+            case 3:
+                {
+
+                    break;
+                }
+            case 4:
+                {
+
+                    break;
+                }
+            case 5:
+                {
+
+                    break;
+                }
+        }
+
+    }
+    public void BeamStart()
+    {
+        StartCoroutine(playerMain.Beam());
+    }
+
+
 }

@@ -77,9 +77,35 @@ public class PlayerMain : MonoBehaviour
             yield return new WaitForSeconds(SkillsManager.protectionDomeRefresh);
         }
     }
+    public IEnumerator Beam()
+    {
+        for (; ; )
+        {
+            float angle = Random.Range(0f, 2 * Mathf.PI); 
+            Vector3 spawnPos = GameManager.Instance.playerMovement.spawnTransform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (SkillsManager.beamRandomRadius); 
+
+            //if (Physics.Raycast(spawnPos, Vector3.down, out hit, height, groundLayer))
+            //{
+                GameObject vfx = GameManager.Instance.vFXManager.SpawnVFX(2, spawnPos);
+
+            //}
+            
+            Collider[] hitColliders = Physics.OverlapSphere(spawnPos, SkillsManager.beamRadius, LayerMask.GetMask("Enemy"));
+            yield return new WaitForSeconds(0.4f);
+            if (hitColliders.Length > 0)//hitColliders[i].gameObject.GetComponent<EnemyBehaviour>().ApplyDamage(garlicDamage);
+            {
+                foreach (Collider col in hitColliders)
+                {
+                    col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.beamDamage);
+                    StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.beamSlowDuration, SkillsManager.beamSlow));
+                }
+            }
+            yield return new WaitForSeconds(SkillsManager.beamRefresh);
+        }
+    }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, SkillsManager.protectionDomeRadius);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(GameManager.Instance.playerMovement.PlayerTransform.position, SkillsManager.protectionDomeRadius);
     }
 }

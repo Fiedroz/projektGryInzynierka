@@ -11,4 +11,9 @@ public class VFXManager : MonoBehaviour
         GameObject vfxObject = Instantiate(vfx[id],position,Quaternion.identity,parent);
         return vfxObject;
     }
+    public GameObject SpawnVFX(int id, Vector3 position)
+    {
+        GameObject vfxObject = Instantiate(vfx[id], position, Quaternion.identity);
+        return vfxObject;
+    }
 }
