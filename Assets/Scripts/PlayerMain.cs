@@ -70,8 +70,11 @@ public class PlayerMain : MonoBehaviour
             {
                 foreach (Collider col in hitColliders)
                 {
-                    col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.protectionDomeDamage);
-                    StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.protectionDomeRefresh, SkillsManager.protectionDomeSlow));
+                    if (col != null)
+                    {
+                        col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.protectionDomeDamage);
+                        StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.protectionDomeRefresh, SkillsManager.protectionDomeSlow));
+                    }
                 }
             }
             yield return new WaitForSeconds(SkillsManager.protectionDomeRefresh);
@@ -96,8 +99,10 @@ public class PlayerMain : MonoBehaviour
             {
                 foreach (Collider col in hitColliders)
                 {
-                    col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.beamDamage);
-                    StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.beamSlowDuration, SkillsManager.beamSlow));
+                    if (col != null) {
+                        col.GetComponent<EnemyBehaviour>().ApplyDamage(SkillsManager.beamDamage);
+                        StartCoroutine(col.GetComponent<EnemyBehaviour>().ApplySlow(SkillsManager.beamSlowDuration, SkillsManager.beamSlow));
+                    }
                 }
             }
             yield return new WaitForSeconds(SkillsManager.beamRefresh);

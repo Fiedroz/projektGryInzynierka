@@ -241,8 +241,11 @@ public class SkillsManager: MonoBehaviour
         }
         else
         {
-            protectionDomeLevel++;
-            ProtectionDomeUpgrade(protectionDomeLevel);
+            if (protectionDomeLevel < 5)
+            {
+                protectionDomeLevel++;
+                ProtectionDomeUpgrade(protectionDomeLevel);
+            }
         }
     }
     public void ProtectionDomeUpgrade(int level) 
@@ -321,8 +324,10 @@ public class SkillsManager: MonoBehaviour
         }
         else
         {
-            beamLevel++;
-            BeamUpgrade(beamLevel);
+            if (beamLevel<5) {
+                beamLevel++;
+                BeamUpgrade(beamLevel);
+            }
         }
     }
     public void BeamUpgrade(int level)
@@ -331,22 +336,38 @@ public class SkillsManager: MonoBehaviour
         {
             case 2:
                 {
-
+                    beamRadius = 4.3f;
+                    beamDamage = 20f;
+                    beamSlow = 100f;
+                    beamSlowDuration = 2f;
+                    beamRefresh = 1.5f;
                     break;
                 }
             case 3:
                 {
-
+                    beamRadius = 4.5f;
+                    beamDamage = 25f;
+                    beamSlow = 100f;
+                    beamSlowDuration = 2f;
+                    beamRefresh = 1.25f;
                     break;
                 }
             case 4:
                 {
-
+                    beamRadius = 4.8f;
+                    beamDamage = 30f;
+                    beamSlow = 100f;
+                    beamSlowDuration = 2f;
+                    beamRefresh = 1f;
                     break;
                 }
             case 5:
                 {
-
+                    beamRadius = 5.2f;
+                    beamDamage = 40f;
+                    beamSlow = 100f;
+                    beamSlowDuration = 3f;
+                    beamRefresh = 0.8f;
                     break;
                 }
         }
