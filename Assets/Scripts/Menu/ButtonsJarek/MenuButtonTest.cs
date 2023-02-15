@@ -10,7 +10,7 @@ public class MenuButtonTest : MonoBehaviour
     [SerializeField] MenuController menuButtonController;
     [SerializeField] Animator animator;
     [SerializeField] GameObject currentPanel;
-    [SerializeField] int thisIndex;
+    [SerializeField] public int thisIndex;
     [SerializeField] bool isPlayButton = false;
     CameraController camControl;
     void Start()
@@ -23,13 +23,13 @@ public class MenuButtonTest : MonoBehaviour
     }
     public void DoAction()
     {
-        if(designatedPanel != null)
+        if (designatedPanel != null)
         {
             designatedPanel.SetActive(true);
             camControl.SetFocusedPanel(designatedPanel);
             currentPanel.SetActive(false);
         }
-        else if(isPlayButton)
+        else if (isPlayButton)
         {
             SceneManager.LoadScene(1);
         }
