@@ -11,9 +11,11 @@ public class EnemyBehaviour : MonoBehaviour
     public float armor;
     public float speed;
     public float attackPower;
+    public float expLevel;
     private NavMeshAgent agent;
 
     public PlayerMovement player;
+    public GameObject expPrefab;
     public float distanceToPlayer;
 
     Renderer enemyRenderer;
@@ -46,6 +48,8 @@ public class EnemyBehaviour : MonoBehaviour
     public void Death()
     {
         Debug.Log("Died");
+        GameObject exp = Instantiate(expPrefab,transform.position,transform.rotation);
+        exp.GetComponent<ExpCrystal>().SetUpCrystal(expLevel);
         Destroy(this.gameObject);
     }
     public void ApplyDamage(float amount) 

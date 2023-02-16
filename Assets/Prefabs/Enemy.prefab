@@ -117,7 +117,9 @@ MonoBehaviour:
   armor: 5
   speed: 5
   attackPower: 5
+  expLevel: 1
   player: {fileID: 0}
+  expPrefab: {fileID: 6705087737742590143, guid: 641ba31c035818a4590df663b493bb10, type: 3}
   distanceToPlayer: 0
 --- !u!143 &834568945
 CharacterController:

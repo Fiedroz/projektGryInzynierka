@@ -10,6 +10,7 @@ public class PlayerMain : MonoBehaviour
     public float speed = 1;
     public float attackPower = 10;
     public float exp = 0;
+    public float expMax = 100;
     public float level = 1;
     public bool alive = true;
 
@@ -28,6 +29,21 @@ public class PlayerMain : MonoBehaviour
             {
                 Death();
             }
+        }
+        if (other.tag=="Exp")
+        {
+            AddExp(other.GetComponent<ExpCrystal>().ExpAmount);
+            Destroy(other.gameObject);
+        }
+    }
+    void AddExp(float expRef)
+    {
+        exp += expRef;
+        if (exp>=expMax)
+        {
+            exp -= expMax;
+            level++;
+            expMax += 50f;
         }
     }
     public void Death()

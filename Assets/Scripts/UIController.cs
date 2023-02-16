@@ -28,5 +28,7 @@ public class UIController : MonoBehaviour
         textDebugs[3].text = "Attack: " + player.playerMain.attackPower;
         textDebugs[4].text = "ProtectionDome lvl: " + SkillsManager.protectionDomeLevel;
         textDebugs[5].text = "Beam lvl: " + SkillsManager.beamLevel;
+        textDebugs[6].text = "Exp: " + player.playerMain.exp+"/"+ player.playerMain.expMax;
+        textDebugs[7].text = "Level: " + player.playerMain.level;
     }
 }
