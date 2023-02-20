@@ -33,7 +33,7 @@ public class PlayerMain : MonoBehaviour
         if (other.tag=="Exp")
         {
             AddExp(other.GetComponent<ExpCrystal>().ExpAmount);
-            Destroy(other.gameObject);
+            other.GetComponent<ExpCrystal>().isGathered = true;
         }
     }
     void AddExp(float expRef)
