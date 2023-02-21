@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIController : MonoBehaviour
@@ -8,6 +9,7 @@ public class UIController : MonoBehaviour
     #region Debug
     public PlayerMovement player;
     public TextMeshProUGUI[] textDebugs;
+    public Image lvlProgress;
     #endregion
 
     void Start()
@@ -19,6 +21,12 @@ public class UIController : MonoBehaviour
     void Update()
     {
         UIDebug();
+        FillLvlProgress();
+    }
+    void FillLvlProgress()
+    {
+        float fillAmount = player.playerMain.exp / player.playerMain.expMax;
+        lvlProgress.fillAmount = fillAmount;
     }
     public void UIDebug()
     {

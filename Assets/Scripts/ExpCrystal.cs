@@ -23,25 +23,25 @@ public class ExpCrystal : MonoBehaviour
         {
             case 1:
                 {
-                    ExpAmount = 10;
+                    ExpAmount = 5;
                     render.material.color = Color.white;
                     break;
                 }
             case 2:
                 {
-                    ExpAmount = 20;
+                    ExpAmount = 10;
                     render.material.color = Color.green;
                     break;
                 }
             case 3:
                 {
-                    ExpAmount = 30;
+                    ExpAmount = 20;
                     render.material.color = Color.yellow;
                     break;
                 }
             case 5:
                 {
-                    ExpAmount = 50;
+                    ExpAmount = 40;
                     render.material.color = Color.blue;
                     break;
                 }
