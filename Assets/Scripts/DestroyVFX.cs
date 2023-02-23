@@ -34,5 +34,6 @@ public class DestroyVFX : MonoBehaviour
     private IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(duration);
+        Destroy(this.gameObject);
     }
 }
