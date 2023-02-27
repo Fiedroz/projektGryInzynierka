@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781cc897cf8675041a751163b51f97dd, type: 3}
   m_Name: HDRenderPipelineGlobalSettings
   m_EditorClassIdentifier: 
+  s_DefaultVolume: {fileID: 0}
   m_DefaultVolumeProfile: {fileID: 11400000, guid: 8134692e5ccc9a7499d3d9032ee9fae1, type: 2}
   m_LookDevVolumeProfile: {fileID: 11400000, guid: 5f8b437f9c413c0458518bb160d9a512, type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
@@ -28,6 +29,7 @@ MonoBehaviour:
     sssQualityLevel: 0
     sssCustomSampleBudget: 20
     msaaMode: 1
+    sssResolvedSampleBudget: 0
     materialQuality: 0
   m_RenderingPathDefaultBakedOrCustomReflectionFrameSettings:
     bitDatas:
@@ -43,6 +45,7 @@ MonoBehaviour:
     sssQualityLevel: 0
     sssCustomSampleBudget: 20
     msaaMode: 1
+    sssResolvedSampleBudget: 0
     materialQuality: 0
   m_RenderingPathDefaultRealtimeReflectionFrameSettings:
     bitDatas:
@@ -58,8 +61,10 @@ MonoBehaviour:
     sssQualityLevel: 0
     sssCustomSampleBudget: 20
     msaaMode: 1
+    sssResolvedSampleBudget: 0
     materialQuality: 0
   m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7, type: 2}
+  m_RenderPipelineEditorResources: {fileID: 1, guid: bf65aa0c6e3e70c4c8b484c4ddac473e, type: 2}
   m_RenderPipelineRayTracingResources: {fileID: 0}
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
@@ -98,4 +103,7 @@ MonoBehaviour:
     serializedProfiles: []
     serializedBakeSettings: []
     serializedBakingSets: []
+    parentAsset: {fileID: 0}
+    parentSceneDataPropertyName: 
+    bakingSets: []
   m_Version: 3
