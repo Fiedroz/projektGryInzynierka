@@ -9,8 +9,13 @@ public class MenuController : MonoBehaviour
     public int index;
     int menuLength;
 
+    private NavigationControls navigationControls;
+
     void Start()
     {
+        navigationControls = new NavigationControls();
+        navigationControls.Enable();
+
         if (!isMainPanel)
         {
             gameObject.SetActive(false);
@@ -24,7 +29,7 @@ public class MenuController : MonoBehaviour
     }
     private void detectChange()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (navigationControls.Navigation.GoDown.triggered && navigationControls.Navigation.GoDown.ReadValue<float>() > 0)
         {
             if (index >= menuLength)
             {
@@ -35,7 +40,7 @@ public class MenuController : MonoBehaviour
                 index++;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (navigationControls.Navigation.GoUp.triggered && navigationControls.Navigation.GoUp.ReadValue<float>() > 0)
         {
             if (index <= 0)
             {
@@ -46,13 +51,13 @@ public class MenuController : MonoBehaviour
                 index--;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (navigationControls.Navigation.Confirm.triggered && navigationControls.Navigation.Confirm.ReadValue<float>() > 0)
         {
             buttons[index].DoAction();
             index = 0;
         }
 
-        if (Input.GetAxis("Cancel") > 0)
+        if (navigationControls.Navigation.Return.triggered && navigationControls.Navigation.Return.ReadValue<float>() > 0)
         {
             buttons[buttons.Length - 1].DoAction();
             index = 0;

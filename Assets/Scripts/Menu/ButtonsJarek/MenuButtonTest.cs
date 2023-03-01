@@ -13,9 +13,14 @@ public class MenuButtonTest : MonoBehaviour
     [SerializeField] public int thisIndex;
     [SerializeField] bool isPlayButton = false;
     CameraController camControl;
+    public bool isSelected = false;
+
+    private NavigationControls navigationControls;
     void Start()
     {
         camControl = Camera.main.GetComponent<CameraController>();
+        navigationControls = new NavigationControls();
+        navigationControls.Enable();
     }
     void Update()
     {
@@ -31,16 +36,17 @@ public class MenuButtonTest : MonoBehaviour
         }
         else if (isPlayButton)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneName: "MainGame");
         }
     }
     private void detectChange()
     {
         if (menuButtonController.index == thisIndex)
         {
+            this.isSelected = true;
             EventSystem.current.SetSelectedGameObject(this.gameObject);
             animator.SetBool("selected", true);
-            if (Input.GetAxis("Submit") == 1)
+            if (navigationControls.Navigation.Confirm.triggered && navigationControls.Navigation.Confirm.ReadValue<float>() > 0)
             {
                 animator.SetBool("pressed", true);
             }
@@ -51,6 +57,7 @@ public class MenuButtonTest : MonoBehaviour
         }
         else
         {
+            this.isSelected = false;
             animator.SetBool("selected", false);
         }
     }

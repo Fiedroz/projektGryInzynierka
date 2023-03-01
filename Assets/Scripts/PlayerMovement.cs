@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public PlayerMain playerMain;
     public Transform spawnTransform;
+
+    private PlayerControls playerControls;
     private void Start()
     {
         contr = GetComponent<CharacterController>();
+        playerControls = new PlayerControls();
+        playerControls.Enable();
     }
     // Update is called once per frame
     void Update()
@@ -51,22 +56,22 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 way = new Vector3(1, 0, 1);
 
-        if (Input.GetKey(KeyCode.W))
+        if (playerControls.Movement.MoveUp.ReadValue<float>() > 0)
         {
             verticalMove++;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (playerControls.Movement.MoveDown.ReadValue<float>() > 0)
         {
             verticalMove--;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (playerControls.Movement.MoveLeft.ReadValue<float>() > 0)
         {
             horizontalMove--;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (playerControls.Movement.MoveRight.ReadValue<float>() > 0)
         {
             horizontalMove++;
         }
