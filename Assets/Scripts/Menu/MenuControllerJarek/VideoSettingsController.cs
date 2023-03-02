@@ -30,9 +30,4 @@ public class VideoSettingsController : MonoBehaviour
     {
         
     }
-
-    public void SetQuality(int index)
-    {
-        QualitySettings.SetQualityLevel(index);
-    }
 }

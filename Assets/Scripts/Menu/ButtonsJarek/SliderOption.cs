@@ -11,25 +11,25 @@ public class SliderOption : MonoBehaviour
     void Start()
     {
         slider.value = 10;
-        slider.onValueChanged.AddListener((v) =>
-        {
-            Debug.Log(v.ToString());
-        });
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+    public void OnGoRight()
+    {
         if (button.isSelected)
         {
-            if (Input.GetKeyUp(KeyCode.LeftArrow))
-            {
-                slider.value--;
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                slider.value++;
-            }
+            slider.value++;
+        } 
+    }
+    public void OnGoLeft()
+    {
+        if (button.isSelected)
+        {
+            slider.value--;
         }
     }
 }

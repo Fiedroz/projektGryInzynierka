@@ -25,42 +25,38 @@ public class MenuController : MonoBehaviour
     }
     void Update()
     {
-        if (gameObject.activeSelf) detectChange();
+        
     }
-    private void detectChange()
+    public void OnGoDown()
     {
-        if (navigationControls.Navigation.GoDown.triggered && navigationControls.Navigation.GoDown.ReadValue<float>() > 0)
+        if (index >= menuLength)
         {
-            if (index >= menuLength)
-            {
-                index = 0;
-            }
-            else
-            {
-                index++;
-            }
-        }
-        else if (navigationControls.Navigation.GoUp.triggered && navigationControls.Navigation.GoUp.ReadValue<float>() > 0)
-        {
-            if (index <= 0)
-            {
-                index = menuLength;
-            }
-            else
-            {
-                index--;
-            }
-        }
-        else if (navigationControls.Navigation.Confirm.triggered && navigationControls.Navigation.Confirm.ReadValue<float>() > 0)
-        {
-            buttons[index].DoAction();
             index = 0;
         }
-
-        if (navigationControls.Navigation.Return.triggered && navigationControls.Navigation.Return.ReadValue<float>() > 0)
+        else
         {
-            buttons[buttons.Length - 1].DoAction();
-            index = 0;
+            index++;
         }
+    }
+    public void OnGoUp()
+    {
+        if (index <= 0)
+        {
+            index = menuLength;
+        }
+        else
+        {
+            index--;
+        }
+    }
+    public void OnConfirm()
+    {
+        buttons[index].DoAction();
+        index = 0;
+    }
+    public void OnReturn()
+    {
+        buttons[menuLength].DoAction();
+        index = 0;
     }
 }
