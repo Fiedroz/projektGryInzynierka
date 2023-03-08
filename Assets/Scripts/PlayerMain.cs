@@ -131,8 +131,8 @@ public class PlayerMain : MonoBehaviour
         GameObject vfx = GameManager.Instance.vFXManager.SpawnVFX(3, transform.position);
         vfx.GetComponent<BackpackRocket>().randomPostition=spawnPos;
         vfx.GetComponent<BackpackRocket>().startingPosition = transform.position;
+        GameManager.Instance.vFXManager.SpawnVFX(4, spawnPos);
         yield return new WaitForSeconds(2f);
-
     }
     private void OnDrawGizmosSelected()
     {
